@@ -182,8 +182,8 @@ h2 {
 }
 
 .card {
-    margin: 5px;
-    margin-bottom: 20px;
+    margin-left: 15px;
+    margin-bottom: 25px;
     border: none !important;
     cursor: pointer;
 }
