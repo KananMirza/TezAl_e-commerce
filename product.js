@@ -241,7 +241,7 @@ function updateProduct(id) {
     ViewFavourite();
 }
 
-var x = window.matchMedia("(max-width: 600px)")
+var x = window.matchMedia("(max-width: 850px)")
 function myFunction(x) {
     if (x.matches) { 
     document.getElementsByClassName('category')[0].innerHTML = `See Category <i id='arrow' class="fas "></i>`

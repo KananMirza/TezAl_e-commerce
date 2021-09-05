@@ -221,7 +221,7 @@ h2 {
     
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 850px) {
     .link {
         display: none;
     }
