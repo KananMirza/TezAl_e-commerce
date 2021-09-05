@@ -241,7 +241,7 @@ function updateProduct(id) {
     ViewFavourite();
 }
 
-
+var x = window.matchMedia("(max-width: 600px)")
 function myFunction(x) {
     if (x.matches) { 
     document.getElementsByClassName('category')[0].innerHTML = `See Category <i id='arrow' class="fas "></i>`
@@ -256,7 +256,7 @@ function myFunction(x) {
         
     }
   }
+
   
-  var x = window.matchMedia("(max-width: 600px)")
   myFunction(x) // Call listener function at run time
   x.addListener(myFunction) // Attach listener function on state changes
