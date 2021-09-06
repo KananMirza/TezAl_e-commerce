@@ -59,7 +59,7 @@ function ViewProduct() {
         <div class="card-button">
             <div class="addproduct">
                 <i class="fas fa-minus" onclick='minusCount(${i})'></i>
-                <input type="text" class="number" value="0">
+                <input type="text" class="number" value="0" id="${i}">
                 <i class="fas fa-plus" onclick='plusCount(${i})'"></i>
             </div>
             <button href="#"  class="btn btn-primary addButton" onclick='addProduct(${i})'>Add Basket</button>
@@ -102,6 +102,9 @@ function addProduct(id) {
                 swal("This item is already in your basket!", "Please check your basket");
                 
             } else {
+                if($.isNumeric($(`#${id}`).val()) == false){
+                    swal("This value is not number!!!!");
+                }else{
                
                 Card.image.push(image);
                 Card.title.push(title);
@@ -119,6 +122,7 @@ function addProduct(id) {
                 number = [0, 0, 0, 0, 0, 0];
                 ViewProduct();
             }
+        }
     }
     console.log(image)
 }
