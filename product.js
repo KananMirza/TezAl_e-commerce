@@ -217,7 +217,9 @@ function deleteProduct(id) {
 function updateProduct(id) {
     let number = document.getElementsByClassName('number')[id].value;
     let Card = JSON.parse(localStorage.usercard);
-    
+    if($.isNumeric($(`#${id}`).val()) == false){
+        swal("This value is not number!!!!");
+    }else{
 
     let price = Card.price[id];
 
@@ -246,6 +248,7 @@ function updateProduct(id) {
     console.log(number)
     ViewCount();
     ViewFavourite();
+}
 }
 
 var x = window.matchMedia("(max-width: 850px)")
