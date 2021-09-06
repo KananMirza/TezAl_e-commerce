@@ -169,7 +169,7 @@ function ViewFavourite() {
         <div class="card-button">
             <div class="addproduct">
                 <i class="fas fa-minus" onclick='minusCount(${i})'></i>
-                <input type="text" class="number" value="${number[i]}">
+                <input type="text" class="number" value="${number[i]}" id="${i}">
                 <i class="fas fa-plus" onclick='plusCount(${i})'"></i>
             </div>
             <button class='btn btn-warning' onclick='updateProduct(${i})'>Update</button>
@@ -217,9 +217,7 @@ function deleteProduct(id) {
 function updateProduct(id) {
     let number = document.getElementsByClassName('number')[id].value;
     let Card = JSON.parse(localStorage.usercard);
-    if($.isNumeric($(`#${id}`).val()) == false){
-        swal("This value is not number!!!!");
-    }else{
+    
 
     let price = Card.price[id];
 
@@ -232,6 +230,9 @@ function updateProduct(id) {
 
 
     Card.count[id] = number;
+    if($.isNumeric($(`#${id}`).val()) == false){
+        swal("This value is not number!!!!");
+    }else{
     if (Card.count[id] == 0) {
         Card.image.splice(id, 1);
         Card.title.splice(id, 1);
