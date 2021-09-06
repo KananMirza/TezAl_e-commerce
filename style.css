@@ -5,6 +5,8 @@
 
 body {
     background-color: #F5F7FC !important;
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -98,7 +100,7 @@ h2 {
 .menu {
     width: 20%;
     background-color: #272B41;
-    
+
     display: flex;
     flex-direction: column;
     margin-top: 5px;
@@ -109,15 +111,18 @@ h2 {
 
 .allproducts {
     width: 80%;
-    height: 600px;
+   
 
 }
 
 .menu p {
-
     text-align: center;
     cursor: pointer;
     color: white;
+}
+.menu-link:hover{
+    transition: 0.5s;
+    color: #8462F4;
 }
 
 
@@ -167,9 +172,10 @@ h2 {
 }
 
 
-.allcategory a{
+.allcategory a {
     text-decoration: none;
 }
+
 .card-body {
     border: 1px solid rgb(219, 219, 219);
 }
@@ -187,38 +193,135 @@ h2 {
     border: none !important;
     cursor: pointer;
 }
-.card:hover{
+
+.card:hover {
     transform: scale(1.1);
     transition: 0.5s;
-    }
+}
 
 .price {
     display: flex;
     justify-content: space-around;
 }
 
-@media only screen and (max-width: 1024px){
+.footer {
+   margin-top: 30px;
+    background-color: #272B41;
+    color: white;
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footer__creator {
+    width: 300px;
+}
+.footer__creator a{
+    text-decoration: none;
+}
+
+.footer__creator-date {
+    font-size: 24px;
+    color: white;
+}
+
+
+.footer__author {
+    text-decoration: none;
+    color: white;
+}
+.footer__author:hover,.footer__link:hover,.footer__creator-date:hover{
+    transition: 0.5s;
+    color: #8462F4;
+}
+
+.footer__social-icon {
+    font-size: 30px;
+    margin-top: 20px;
+    margin-right: 15px;
+    color: white;
+}
+.footer__social-icon:hover{
+    transform: scale(1.5);
+    transition: 0.5s;
+}
+.footer__social-icon--red:hover{
+    color: red;
+    
+}
+.footer__social-icon--blue:hover{
+    color: blue;
+}
+.footer__subtitle {
+    font-size: 24px;
+}
+
+.footer__item {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.footer__link {
+    text-decoration: none;
+    color: white;
+}
+
+
+@media only screen and (max-width: 1024px) {
     .link {
         flex-direction: row;
         justify-content: space-evenly;
-        
+
     }
+
     header {
         display: flex;
         margin-left: 10px;
     }
-    
+
     .header_button {
         margin-left: 35%;
     }
-    section{
+
+    section {
         width: 80%;
         margin: auto;
     }
-    .products{
+
+    .products {
         width: 100%;
     }
-    
+
+    .footer{
+        flex-direction: column;
+            padding: 30px;
+    }
+
+    .footer__creator{
+              
+        width: 100%;
+        text-align: center;
+    }
+    .footer-date{
+                    
+        font-size: 15px;
+        text-align: center;
+         
+     }
+     .footer__social{
+        margin-top: 20px;
+        text-align: center;
+    }
+    .footer__contact{
+        margin-top: 20px;
+        text-align: center;
+        font-size: 15px;
+    }
+    .footer__link{
+        font-size: 14px;
+    }
+
 }
 
 @media only screen and (max-width: 850px) {
@@ -236,10 +339,10 @@ h2 {
         margin-top: -5%;
     }
 
-    section{
+    section {
         width: 100%;
     }
-  
+
     .products {
         width: 100%;
         flex-direction: column;
@@ -248,16 +351,19 @@ h2 {
     .menu {
         width: 100%;
     }
-    .category{
+
+    .category {
         padding-top: 10px;
-       
-       
+
+
     }
-    .category i{
+
+    .category i {
         font-size: 20px;
-        
+
     }
-    .allcategory{
+
+    .allcategory {
         display: none;
     }
 
@@ -268,13 +374,13 @@ h2 {
     .card {
         margin-top: 20px !important;
     }
-    .addproduct i:first-child{
-        left:6%
-        
-    }
-    .addproduct i:last-child{
-        left:21%
-    }
-    
-}
 
+    .addproduct i:first-child {
+        left: 6%
+    }
+
+    .addproduct i:last-child {
+        left: 21%
+    }
+
+}

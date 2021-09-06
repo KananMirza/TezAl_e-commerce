@@ -92,7 +92,9 @@ function addProduct(id) {
         let title = Products.title[id];
         let price = Products.price[id];
         let priceAddDiscount = Products.priceAddDiscount[id];
+       
     let count = document.getElementsByTagName('input')[id].value;
+    
     if (document.getElementsByTagName('input')[id].value == 0) {
         swal("Minimum 1 order");
     } else {          
@@ -100,6 +102,7 @@ function addProduct(id) {
                 swal("This item is already in your basket!", "Please check your basket");
                 
             } else {
+               
                 Card.image.push(image);
                 Card.title.push(title);
                 Card.price.push(price);
