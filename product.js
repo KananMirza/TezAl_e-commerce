@@ -44,7 +44,7 @@ function ViewProduct() {
 
     let list = document.getElementsByClassName('product-list')[0];
     item = ''
-   
+
     for (let i = 0; i < Products.image.length; i++) {
         item += `<div class="card" style="width: 18rem;">
         <img src="img/${Products.image[i]}.jpg" class="card-img-top" alt="...">
@@ -88,24 +88,24 @@ function minusCount(id) {
 
 function addProduct(id) {
     let Card = JSON.parse(localStorage.usercard);
-        let image = Products.image[id];
-        let title = Products.title[id];
-        let price = Products.price[id];
-        let priceAddDiscount = Products.priceAddDiscount[id];
-       
+    let image = Products.image[id];
+    let title = Products.title[id];
+    let price = Products.price[id];
+    let priceAddDiscount = Products.priceAddDiscount[id];
+
     let count = document.getElementsByTagName('input')[id].value;
-    
+
     if (document.getElementsByTagName('input')[id].value == 0) {
         swal("Minimum 1 order");
-    } else {          
-    if (image == Card.image[0] || image == Card.image[1] ||image == Card.image[2]||image == Card.image[3]||image == Card.image[4]||image == Card.image[5]) {
-                swal("This item is already in your basket!", "Please check your basket");
-                
+    } else {
+        if (image == Card.image[0] || image == Card.image[1] || image == Card.image[2] || image == Card.image[3] || image == Card.image[4] || image == Card.image[5]) {
+            swal("This item is already in your basket!", "Please check your basket");
+
+        } else {
+            if ($.isNumeric($(`#${id}`).val()) == false) {
+                swal("This value is not number!!!!");
             } else {
-                if($.isNumeric($(`#${id}`).val()) == false){
-                    swal("This value is not number!!!!");
-                }else{
-               
+
                 Card.image.push(image);
                 Card.title.push(title);
                 Card.price.push(price);
@@ -144,13 +144,12 @@ function ViewFavourite() {
 
     let Card = JSON.parse(localStorage.usercard);
 
-
     let image = Card.image;
     let title = Card.title;
     let price = Card.price;
     let count = Card.count
     let priceAddDiscount = Card.priceAddDiscount;
-    
+
     let list = document.getElementsByClassName('product-list')[0];
 
     item = ''
@@ -176,8 +175,6 @@ function ViewFavourite() {
             <button href="#"  class="btn btn-danger" onclick='deleteProduct(${i})'>Delete</button>
         </div>
     </div>`
-
-
     }
     $('h1').text('Shopping Cart')
     Total = Card.total.toFixed(2)
@@ -188,36 +185,36 @@ function ViewFavourite() {
 
 function deleteProduct(id) {
 
-    
-    
-        let Card = JSON.parse(localStorage.usercard);
-        let price = Card.price[id];
-        let count = Card.count[id]
+
+
+    let Card = JSON.parse(localStorage.usercard);
+    let price = Card.price[id];
+    let count = Card.count[id]
 
 
 
-        Card.image.splice(id, 1);
-        Card.title.splice(id, 1);
-        Card.price.splice(id, 1);
-        Card.priceAddDiscount.splice(id, 1);
-        Card.count.splice(id, 1);
-        Card.total -= price * count
+    Card.image.splice(id, 1);
+    Card.title.splice(id, 1);
+    Card.price.splice(id, 1);
+    Card.priceAddDiscount.splice(id, 1);
+    Card.count.splice(id, 1);
+    Card.total -= price * count
 
-        localStorage.usercard = JSON.stringify(Card);
-        ViewCount()
-        swal({
-            title: "Product Deleted!",
-            icon: "success",
-            button: "Okay",
-        });
-   
+    localStorage.usercard = JSON.stringify(Card);
+    ViewCount()
+    swal({
+        title: "Product Deleted!",
+        icon: "success",
+        button: "Okay",
+    });
+
     ViewFavourite();
 }
 
 function updateProduct(id) {
     let number = document.getElementsByClassName('number')[id].value;
     let Card = JSON.parse(localStorage.usercard);
-    
+
 
     let price = Card.price[id];
 
@@ -230,44 +227,45 @@ function updateProduct(id) {
 
 
     Card.count[id] = number;
-    if($.isNumeric($(`#${id}`).val()) == false){
+    if ($.isNumeric($(`#${id}`).val()) == false) {
         swal("This value is not number!!!!");
-    }else{
-    if (Card.count[id] == 0) {
-        Card.image.splice(id, 1);
-        Card.title.splice(id, 1);
-        Card.price.splice(id, 1);
-        Card.priceAddDiscount.splice(id, 1);
-        Card.count.splice(id, 1);
+    } else {
+        if (Card.count[id] == 0) {
+            Card.image.splice(id, 1);
+            Card.title.splice(id, 1);
+            Card.price.splice(id, 1);
+            Card.priceAddDiscount.splice(id, 1);
+            Card.count.splice(id, 1);
+        }
+        localStorage.usercard = JSON.stringify(Card);
+        swal({
+            title: "Product Updated!",
+            icon: "success",
+            button: "Okay",
+        });
+        console.log(number)
+        ViewCount();
+        ViewFavourite();
     }
-    localStorage.usercard = JSON.stringify(Card);
-    swal({
-        title: "Product Updated!",
-        icon: "success",
-        button: "Okay",
-    });
-    console.log(number)
-    ViewCount();
-    ViewFavourite();
-}
 }
 
 var x = window.matchMedia("(max-width: 850px)")
+
 function myFunction(x) {
-    if (x.matches) { 
-    document.getElementsByClassName('category')[0].innerHTML = `See Category <i id='arrow' class="fas "></i>`
-    $('#arrow').toggleClass('fa-chevron-down')
-      $('.category').click(()=>{
-        $('#arrow').toggleClass('fa-chevron-up')
-          $('.allcategory').slideToggle()
-      })
-      
+    if (x.matches) {
+        document.getElementsByClassName('category')[0].innerHTML = `See Category <i id='arrow' class="fas "></i>`
+        $('#arrow').toggleClass('fa-chevron-down')
+        $('.category').click(() => {
+            $('#arrow').toggleClass('fa-chevron-up')
+            $('.allcategory').slideToggle()
+        })
+
 
     } else {
-        
-    }
-  }
 
-  
-  myFunction(x) // Call listener function at run time
-  x.addListener(myFunction) // Attach listener function on state changes
+    }
+}
+
+
+myFunction(x) // Call listener function at run time
+x.addListener(myFunction) // Attach listener function on state changes
