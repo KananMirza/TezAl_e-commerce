@@ -175,6 +175,7 @@ function ViewFavourite() {
             <button href="#"  class="btn btn-danger" onclick='deleteProduct(${i})'>Delete</button>
         </div>
     </div>`
+    
     }
     $('h1').text('Shopping Cart')
     Total = Card.total.toFixed(2)
